@@ -1,0 +1,38 @@
+﻿<div class="customers view indent">
+	<div class="wrapper-md ng-scope">
+	  <div class="row row-sm">
+	    <div data-ng-repeat="product in vm.products"  class="col-lg-12">
+	      <div class="panel b-a">
+	        <div class="panel-heading text-center bg-info no-border">
+	          <h4 class="text-u-c m-b-none">{{product.name}}</h4>
+	          <h2 class="m-t-none">
+	            <sup class="pos-rlt" style="top:-22px">￥</sup>
+	            <span class="text-2x text-lt">{{product.price_unit}}</span>
+	            <span class="text-xs">/ {{product.product_uom_qty}}件</span>
+	          </h2>
+	        </div>
+	        <ul class="list-group">
+	          <li class="list-group-item">
+	            <i class="icon-check text-success m-r-xs"></i> 购买日期:{{product.buy_date}}
+	          </li>
+	          <li class="list-group-item">
+	            <i class="icon-check text-success m-r-xs"></i> 订单号:{{product.order_name}}
+	          </li>
+	          <li class="list-group-item">
+	            <i class="icon-check text-success m-r-xs"></i> 验证码:{{product.code}}
+	          </li>
+	          <li class="list-group-item">
+	            <i class="icon-check text-success m-r-xs"></i> 流水号：{{product.transaction_id}}
+	          </li>
+	          <li class="list-group-item">
+	            <i class="icon-check text-success m-r-xs"></i> {{product.description_notice}}
+	          </li>
+	        </ul>
+	        <div class="panel-footer text-center">
+	          <a href="" class="btn btn-info font-bold m">显示消费二维码</a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

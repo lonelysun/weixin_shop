@@ -1,0 +1,39 @@
+﻿<div class="show-hide-animation" >
+	<div >
+	    <carousel interval="vm.myInterval">
+	      	<slide ng-repeat="slide in vm.slides" >
+	        	<img ng-src="data:image/png;base64,{{slide.image}} " style="margin:auto;">
+		        <div class="carousel-caption">
+		          <p>{{slide.text}}</p>
+		        </div>
+	      	</slide>
+	    </carousel>
+	</div>
+	<div data-ng-repeat="category in vm.categorys">
+        <div ng-if="category.items!='' ">
+           	<div class="wrapper-xs  dk b-b"><h4 class="m-n font-thin h4">{{category.name}}</h4></div>
+        	<ul data-ng-repeat="product in category.items" class=" alt">
+          		<li class="list-group-item " style="border:0px;padding:0px;">
+            		<div class="media b-b" style="padding:10px 5px;">
+						<span class="pull-left thumb-lg" data-ng-show="product.image_medium!=''">
+							<a  href="#/productDetail/{{product.id}}">
+								<img style="text-align:center;" ng-src="data:image/png;base64,{{product.image_medium}}" class="img">
+							</a>
+						</span>
+						<a class="h4" href="#/productDetail/{{product.id}}">
+						<div class="media-body">
+							<div>{{ product.name}}</div>
+							<small data-ng-show="product.description != ''" class="text-muted" style="">{{product.description  | limitTo:29}}...</small>
+							<div style="margin-top:5px;font-size:16px;">
+								<p style="float:left;">单价: ￥{{ product.lst_price}}</p> 
+								<small class="pull-right text-muted  text-ellipsis">
+								<span class="badge bg-light">销售量: {{ product.sales_count}}</span></small> 
+							</div>
+						</div>
+						</a>
+            		</div>
+          		</li>
+        	</ul>
+       	</div>
+    </div>
+</div>

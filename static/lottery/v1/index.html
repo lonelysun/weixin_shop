@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>${company.name}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<link href="/born_weixin_shop/static/src/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/born_weixin_shop/static/src/css/app.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="/born_weixin_shop/static/lottery/v1/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/born_weixin_shop/static/lottery/v1/js/jQueryRotate.2.2.js"></script>
+	<script type="text/javascript" src="/born_weixin_shop/static/lottery/v1/js/jquery.easing.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#startbtn").rotate({
+				bind:{
+					click:function(){
+						var data = [15,315,255,195,135,75,45,105,135,165,225,285,345];
+						var random=Math.floor(Math.random()*data.length);
+						a = data[random];
+						$(this).rotate({
+						 	duration:1000,
+						 	angle: 0, 
+	            			animateTo:14400+a,
+							easing: $.easing.easeOutSine,
+							callback: function(){
+								% if not order.is_lottery:
+								var lottery=0;
+								if(random>5){
+									$("#result").text("恭喜您中了7等奖!");
+									lottery=7;
+								}else{
+									$("#result").text("恭喜您中了"+(random+1)+"等奖!");
+									lottery=random+1;
+								}
+								$.ajax({
+					        	    type: 'POST',
+					        	    url: '/lotteryResult/'+${order.id}+'/'+lottery ,
+					        	    data: {},
+					        	    success: function(data){    } ,
+					        	    dataType: 'json'
+					        	});
+					        	% endif
+							}
+						});
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body style="background-color: #ea3d83;">
+	<div style="height:100%;">
+		<div style="width:100%;padding-top:50px;">
+			<img src="/born_weixin_shop/static/lottery/v1/tittle.png" width="100%" height="100%">
+		</div>
+        <div class="panel-body">
+          <div class="clearfix text-center">
+			<div id="start" >
+				<img style="width:90px;margin-top:50px;" src="/born_weixin_shop/static/lottery/v1/start.png" id="startbtn">
+			</div>
+			<div id="start" style="margin-top:-205px;">
+				<img style="width:235px;" src="/born_weixin_shop/static/lottery/v1/disk.png" >
+			</div>
+          </div>
+        </div>
+     	<div style="color:#ffffff;text-align:center;padding:10px;"> 
+     	     % if order.is_lottery:
+     	     <span id="result">您已经抽过奖了，赶快去查看奖品把！</span>
+     	     % else:
+     	     <span id="result"></span>
+     	     % endif
+     	</div>
+	</div>
+	<div  class="fade-in-right-big smooth ng-scope">
+		<div class="container w-xl w-auto-xs ng-scope" ng-init="app.settings.container = false;">
+  			<a href="" class="navbar-brand block m-t ng-binding">${order.spread_id.name}</a>
+			<div class="m-b-lg">
+				<div class=" ">
+					<small>${order.spread_id.description}</small>
+			  	</div>
+			</div>
+		</div>
+		<div class="panel-body" style="background-color: #ea3d83;color:#ffffff">
+			<article class="media" >
+	            <div class="media-body">                        
+	              	% for product in order.spread_id.product_ids:
+	       			<small class="block m-t-xs">${product.level}等奖：${product.name}</small>
+	    			% endfor
+	            </div>
+			</article>
+		</div>
+		<div class="text-center ng-scope" style="background-color: #ea3d83;color:#ffffff">
+			<p class="ng-scope">
+  				<small class="text-muted" style="color:#ffffff">${company.name}<br>© 2015</small>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

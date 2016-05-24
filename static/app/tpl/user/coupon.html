@@ -1,0 +1,68 @@
+<div class="customers view indent">
+	<div class="wrapper-md ng-scope">
+	  <div class="row row-sm">
+	    <div  class="col-lg-12" data-ng-repeat="coupon in vm.coupons"  >
+	      <div class="panel b-a">
+	        <div class="panel-heading text-center bg-danger">
+	       	<div class=" b-light   row text-center no-gutter">
+              <div class="col-xs-4">
+              <img style="height:50px;"  src="/born_weixin_shop/static/src/img/left.png" >
+              </div>
+              <div class="col-xs-4" >
+               <h3 class="m-t-none">
+	            	<span class="text-1x text-lt" >{{coupon.name}}</span>
+	          	</h3>
+              </div>
+              <div class="col-xs-4">
+                <img style="height:50px;"  src="/born_weixin_shop/static/src/img/right.png" >
+              </div>
+            </div>
+	        </div>
+	        <ul class="list-group" style="padding:15px;">
+	          <li class="list-group-item">
+	          <h3 style="color:#ea5251;">恭喜您获赠:</h3>
+	          <h3 style="color:#ea5251;">{{coupon.product_name}}</h3>
+	          </li>
+	          <li class="list-group-item">
+	          <small>{{coupon.description}}</small>
+	          </li>
+	          <li class="list-group-item">
+	         	订单号:{{coupon.order_name}} 
+	           </li>
+	           <li class="list-group-item">
+	         	日期:{{coupon.create_date}} 
+	           </li>
+	        </ul>
+	      </div>
+	    </div>
+	    <div  class="col-lg-12" data-ng-show="vm.coupons  == 0" >
+	      <div class="panel b-a">
+	        <div class="panel-heading text-center bg-danger">
+	       	<div class=" b-light   row text-center no-gutter">
+              <div class="col-xs-4">
+              <img style="height:50px;"  src="/born_weixin_shop/static/src/img/left.png" >
+              </div>
+              <div class="col-xs-4" >
+               <h3 class="m-t-none">
+	            	<span class="text-1x text-lt" >很遗憾</span>
+	          	</h3>
+              </div>
+              <div class="col-xs-4">
+                <img style="height:50px;"  src="/born_weixin_shop/static/src/img/right.png" >
+              </div>
+            </div>
+	        </div>
+	        <ul class="list-group" style="padding:15px;">
+	          <li class="list-group-item">
+	          <h3 style="color:#ea5251;">您没有奖品</h3>
+	          </li>
+	          <li class="list-group-item">
+	          <small>谢谢您的参与</small>
+	          </li>
+	        </ul>
+	      </div>
+	    </div>
+	    
+	  </div>
+	</div>
+</div>

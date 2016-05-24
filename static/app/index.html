@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <title>微信商城</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link href="/born_weixin_shop/static/src/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/born_weixin_shop/static/src/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/born_weixin_shop/static/src/css/weui.min.css" rel="stylesheet"/>
+    <link href="/born_weixin_shop/static/src/css/styles.css" rel="stylesheet" />
+    <link href="/born_weixin_shop/static/src/css/owl.carousel.css" rel="stylesheet" />
+
+</head>
+<body ontouchstart ng-app="shopApp" ng-cloak>
+
+    <div ng-view style="position:relative;" id="ng-view" ></div>
+
+    <div class=" navbar navbar-fixed-bottom bg-light lt b-t ng-scope" ui-view="footer" >
+		<div class="row ng-scope" >
+		    <nav>
+		         <div class="footermenu" data-collapse="isCollapsed" >
+		             <ul>
+		                 <li> <a href="#/products"><i class="fa fa-home"></i><p>首页</p></a>  </li>
+		                 <li> <a href="#/category"><i class="fa fa-tasks"></i><p>分类</p></a> </li>
+		                 <li> <a href="#/cart" > <i class="fa fa-shopping-cart"></i><p>购物车</p></a> </li>
+		                 <li> <a href="#/user"><i class="fa fa-user"></i><p>我的</p></a>  </li>
+		             </ul>
+		         </div>
+		     </nav>
+		</div>
+	</div>
+
+    <!-- libraries -->
+    <script src="/born_weixin_shop/static/src/js/jweixin-1.0.0.js"></script>
+    <script src="/born_weixin_shop/static/src/js/jquery.js"></script>
+    <script src="/born_weixin_shop/static/src/js/angular.min1.3.js"></script>
+    <script src="/born_weixin_shop/static/src/js/angular-route1.3.min.js"></script>
+    <script src="/born_weixin_shop/static/src/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script src="/born_weixin_shop/static/src/js/sanitize.js"></script>
+    <script src="/born_weixin_shop/static/src/js/angular-touch.js"></script>
+    <script src="/born_weixin_shop/static/src/js/owl.carousel.js"></script>
+    <script src="/born_weixin_shop/static/app/app.js"></script>
+    <script src="/born_weixin_shop/static/app/service/config.js"></script>
+    <script src="/born_weixin_shop/static/app/service/service.data.js"></script>
+    <script src="/born_weixin_shop/static/app/service/service.shop.js"></script>
+    <script src="/born_weixin_shop/static/app/controller/controller.carousel.js"></script>
+    <script src="/born_weixin_shop/static/app/controller/controller.home.js"></script>
+</body>
+</html>
+
+

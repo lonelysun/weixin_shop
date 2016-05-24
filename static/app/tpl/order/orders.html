@@ -1,0 +1,77 @@
+<div class="show-hide-animation">
+	
+	<div data-ng-repeat="order in vm.orders" >
+			<div class="panel panel-default" >
+				<div class="panel-heading">
+			     	<span>订单号：{{order.name }}</span>
+			     	<span class="pull-right">
+				     	<a>{{order.state_name}}</a>
+      				</span>
+			   	</div>
+			   	<ul class="list-group alt">
+					<li data-ng-repeat="product in order.order_line"  class="list-group-item">
+			       		<div class="media">
+			         		<span class="pull-left thumb-md avatar m-r">
+			         			<a data-ng-show="product.image_small!==''" href="#/productDetail/{{product.id}}">
+									<img style="text-align:center;" ng-src="data:image/png;base64,{{product.image_small}}" class="img">
+								</a>
+			       			</span>
+			          		<div class="media-body">
+			            		<div><a href="">{{product.product_name}}</a></div>
+			            		<small class="text-muted ">{{product.description  | limitTo:24}}... </small>
+			             		<div class="clearfix" style="margin-top:3px;">
+			            			<span class="pull-right">单价:￥{{product.price_unit}}</span>
+			            		</div>
+			             		<div class="clearfix">
+			            			<span class="pull-right">数量:{{product.product_uom_qty}}</span>
+			            		</div>
+			            		<div class="b-t" style="margin-top:5px;padding:3px 0px;">
+			            			<span class="pull-right">小计:￥{{product.price_subtotal}}</span>
+			            		</div>
+			          		</div>
+			        	</div>
+			      	</li>
+			   	</ul>
+			   	<div class="text-center" data-ng-show="order.spread_id>0">
+			   	<p style="margin-top:15px;font-size:26px;" class="ng-binding">参加活动：{{order.spread_name}}</p>
+		         	<div style="padding:10px 0px;font-size: 13px;">
+		         		{{order.spread_description}}
+		         	</div>
+		         	<div style="border-bottom:solid 1px #dedede;padding-bottom:10px;">
+						<a class="btn btn-danger"  data-ng-show="order.is_lottery==false"  href="/lottery/{{order.id}}">马上去抽奖</a>
+						<a class="btn btn-danger" data-ng-show="order.is_lottery" href="#/coupons/{{order.id}}" >查看奖品</a>
+					</div>
+	         	</div>
+          		<div style="background-color:#ffffff;margin-top:30px;">
+	         	<div class="hbox text-center b-t b-light">          
+	              <a href="" class="col padder-v text-muted b-r b-light">
+	                <span>数量:￥{{vm.orders.length}}</span>
+	              </a>
+	              <a href="" class="col padder-v  b-r text-muted">
+	                <span>税:￥{{order.amount_tax}}</span>
+	              </a>
+	              <a href="" class="col padder-v text-muted">
+	                <span>实付:￥{{order.amount}}</span>
+	              </a>
+	            </div>
+            </div>
+            
+          		<div class="btn-group btn-group-justified">
+		          <a data-ng-show="order.state=='draft'" data-ng-click="vm.updateOrder($index,'cancel')" class="btn " style="background-color:#ffffff;border:solid 1px #ff5252;color:#ff5252;">取消订单</a>
+		          <a data-ng-show="order.state=='cancel'" data-ng-click="vm.updateOrder($index,'unlink')" class="btn " style="background-color:#ffffff;border:solid 1px #ff5252;color:#ff5252;">删除订单</a>
+		          <a data-ng-show="order.state=='cancel'" data-ng-click="vm.updateOrder($index,'draft')" class="btn " style="background-color:#ff5252;border:solid 1px #ff5252;color:#ffffff;">确认订单</a>
+		          <a data-ng-show="order.state=='draft'" href="#/checkout/{{order.id}}" class="btn" style="background-color:#ff5252;border:solid 1px #ff5252;color:#ffffff;">去支付</a>
+		        </div>
+		        <div class="btn-group btn-group-justified">
+		        	<a data-ng-show="order.transaction_id!=''" class="btn btn-success">流水号：{{order.transaction_id}}</a>
+		        </div>
+			</div>
+	</div>
+	
+	<div class=" " data-ng-show="vm.orders.length  == 0" >
+		<div style="line-height:300px;text-align:center;">
+            <img  src="born_weixin_shop/static/src/img/order_empty.png" style="width:200px;">
+		</div>
+	</div>
+</div>
+

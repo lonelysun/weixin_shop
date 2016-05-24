@@ -1,0 +1,32 @@
+﻿<div class="customers view indent">
+   <div class="panel panel-default">
+        <div class="panel-heading font-bold">账户管理
+	        <span class="pull-right text-center text-muted">
+	        	<i class="icon-user-following"></i>
+	        </span>
+        </div>
+        <div class="panel-body">
+        	<form role="form" class="ng-pristine ng-valid">
+	            <div class="form-group">
+	            	<label>昵称</label>
+	            	<input  class="form-control" name="nickname" readonly="readonly"  data-ng-model="vm.account.nickname" requiredplaceholder="昵称">
+	            </div>
+	            <div class="form-group">
+	            	<label>真实姓名</label>
+	              	<input  class="form-control" name="realname"   data-ng-model="vm.account.realname" requiredplaceholder="昵称" required>
+	            </div>
+	            <div class="form-group">
+	              	<label>邮件地址</label>
+	              	<input type="mail" name="mail" class="form-control" data-ng-model="vm.account.mail" placeholder="邮件地址">
+	            </div>
+	            <div class="form-group">
+	              	<label>电话</label>
+	              	<input type="phome" name="phone" class="form-control" data-ng-model="vm.account.phone" placeholder="电话">
+	            </div>
+	          	<div class="m-b-sm">
+		          	<p><button class="btn btn-info btn-lg btn-block">保存</button></p>
+	        	</div>
+          	</form>
+        </div>
+	</div>
+</div>

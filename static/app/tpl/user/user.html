@@ -1,0 +1,80 @@
+﻿<div class="customers view indent">
+   
+   <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="clearfix text-center m-t">
+            <div class="inline">
+              <div class="easyPieChart" >
+                <div class="thumb-xl avatar m-r">
+                  <img style="width:128px" data-ng-show="vm.user.image!==false" ng-src="data:image/png;base64,{{vm.user.image}}" >
+                  <img data-ng-show="vm.user.image==false" src="/born_weixin_shop/static/src/img/head.jpg" class="img-circle" alt="...">
+                </div>
+              </div>
+              <div class="h4 m-t m-b-xs">{{vm.user.nickname}}</div>
+              <small class="text-muted m-b">{{vm.user.remark}}</small>
+            </div>                      
+          </div>
+        </div>
+        <div class="bg-info text-center no-padder">
+          <div class="row no-gutter">
+            <div class="col-xs-6" style="background-color:#ff5252;color:#ffffff;">
+              <div class="wrapper">
+              	<a href="#/productList/0?type=follow">
+	                <span class="m-b-xs h3 block text-white">{{vm.user.follow_count}}</span>
+	                <small class="text-muted">关注的商品</small>
+                </a>
+              </div>
+            </div>
+            <div class="col-xs-6 dk"  style="background-color:#ff5252;color:#ffffff;">
+              <div class="wrapper">
+              	<a href="#/userProducts">
+	                <span class="m-b-xs h3 block text-white">{{vm.user.all_product_count}}</span>
+	                <small class="text-muted">已购商品</small>
+                 </a>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+
+		<div class="list-group no-radius alt">
+             <a class="list-group-item" href="#/orders?order_id=0&state=draft">
+               <span class="badge bg-light">{{vm.user.draft_order_count}}</span>
+               <i class="fa fa-reorder"></i> 
+               	待付款的订单
+             </a>
+             <a class="list-group-item" href="#/orders?order_id=0&state=payed">
+               <span class="badge bg-light">{{vm.user.payed_order_count}}</span>
+               <i class="fa fa-reorder"></i> 
+               	已付款的订单
+             </a>
+             <a class="list-group-item" href="#/orders?order_id=0&state=cancel">
+               <span class="badge bg-light">{{vm.user.cancel_order_count}}</span>
+               <i class="fa fa-reorder"></i> 
+               	已取消的订单
+             </a>
+             <a class="list-group-item" href="#/orders?order_id=0&state=all">
+               <span class="badge bg-light">{{vm.user.all_order_count}}</span>
+               <i class="fa fa-reorder"></i> 
+               	所有订单
+             </a>
+		</div>
+	</div>
+	   <div class="panel panel-default" >
+      	<div class="hbox text-center text-sm"  >          
+          <a href="#account" class="col padder-v text-muted b-r b-light">
+            <i class="icon-user block m-b-xs fa-2x"></i>
+            <span>帐号管理</span>
+          </a>
+          <a href="" class="col padder-v text-muted b-r b-light">
+            <i class="icon-pointer block m-b-xs fa-2x"></i>
+            <span>收货地址</span>
+          </a>
+          <a href="#coupons/0" class="col padder-v text-muted">
+            <i class="icon-heart block m-b-xs fa-2x"></i>
+            <span>我的奖品</span>
+          </a>
+        </div>
+        </div>
+        <div style="height:20px;"></div>
+</div>

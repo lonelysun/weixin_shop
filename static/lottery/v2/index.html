@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<title>${company.name}</title>
+	<link href="/born_weixin_shop/static/src/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/born_weixin_shop/static/src/css/app.min.css" rel="stylesheet" />
+	<script type="text/javascript" src="/born_weixin_shop/static/lottery/v2/jquery-1.4.2.min.js"></script>
+</head>
+<body>
+% if order.is_lottery:
+<div class="jumbotron masthead">
+      <div class="container">
+        <h2>您已经抽过奖了</h2>
+      </div>
+    </div>
+% else :
+<div>
+	<canvas></canvas>
+</div>
+
+<script type="text/javascript">
+	var sync=false;
+	var bodyStyle = document.body.style;
+	bodyStyle.mozUserSelect = 'none';
+	bodyStyle.webkitUserSelect = 'none';
+	var img = new Image();
+	var canvas = document.querySelector('canvas');
+	canvas.style.backgroundColor='transparent';
+	canvas.style.position = 'absolute';
+	var imgs = ['/born_weixin_shop/static/lottery/v2/1.jpg','/born_weixin_shop/static/lottery/v2/2.jpg'];
+	var num = Math.floor(Math.random()*0);
+	img.src = imgs[${index}];
+	
+	img.addEventListener('load', function(e) {
+		var ctx;
+	    var w = img.width,
+	    	h = img.height;
+	    var offsetX = canvas.offsetLeft,
+	    	offsetY = canvas.offsetTop;
+	    var mousedown = false;
+	
+	    function layer(ctx) {
+	        ctx.fillStyle = 'gray';
+	        ctx.fillRect(0, 0, w, h);
+	    }
+	
+	    function eventDown(e){
+	        e.preventDefault();
+	        mousedown=true;
+	    }
+	
+	    function eventUp(e){
+	        e.preventDefault();
+	        mousedown=false;
+	        if(sync==false)
+	        {
+	        	$.ajax({
+	        	    type: 'POST',
+	        	    url: '/lotteryResult/'+${order_id} ,
+	        	    data: {},
+	        	    success: function(data){    } ,
+	        	    dataType: 'json'
+	        	});
+				sync=true;
+			}
+	    }
+	    
+	    function eventMove(e){
+	        e.preventDefault();
+	        if(mousedown) {
+	             if(e.changedTouches){
+	                 e=e.changedTouches[e.changedTouches.length-1];
+	             }
+	             var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+	                 y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+	             with(ctx) {
+	                 beginPath()
+	                 arc(x, y, 10, 0, Math.PI * 2);
+	                 fill();
+	             }
+	        }
+	    }
+	    canvas.width=w;
+	    canvas.height=h;
+	    canvas.style.backgroundImage='url('+img.src+')';
+	    ctx=canvas.getContext('2d');
+	    ctx.fillStyle='transparent';
+	    ctx.fillRect(0, 0, w, h);
+	    layer(ctx);
+	
+	    ctx.globalCompositeOperation = 'destination-out';
+	    canvas.addEventListener('touchstart', eventDown);
+	    canvas.addEventListener('touchend', eventUp);
+	    canvas.addEventListener('touchmove', eventMove);
+	    canvas.addEventListener('mousedown', eventDown);
+	    canvas.addEventListener('mouseup', eventUp);
+	    canvas.addEventListener('mousemove', eventMove);
+	});
+</script>
+% endif
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<div class="show-hide-animation" >
+	<carousel interval="5000">
+    	<slide ng-repeat="slide in vm.product.images" active="slide.active">
+      		<img ng-src="data:image/png;base64,{{slide.image}}" style="margin:auto;">
+      	</slide>
+    </carousel>
+   <div class="panel hbox hbox-auto-xs no-border"  >
+        <div class="text-center" style="background-color:#eef3f3;padding-top:30px;">
+         	<span data-ng-show="vm.product.image_small!=false" class="thumb-lg avatar m-r">
+				<img ng-src="data:image/png;base64,{{vm.product.image_small}}" width="100%" style="margin-top:6px;" align="absmiddle">
+ 			</span>
+         	<p  style="margin-top:15px;font-size:26px;">{{vm.product.name}}</p>
+         	<div style="margin:15px 20px;padding:10px 0px;font-size: 13px;border-top:solid 1px #dedede;border-bottom:solid 1px #dedede;">{{vm.product.description}}</div>
+         	<div style="margin-top:5px;color:#ff5252;">商城价</div>
+         	<p class="h2" style="margin:0px;color:#ff5252;">￥{{vm.product.lst_price}}</p>
+         	
+         	<div style="background-color:#ffffff;margin-top:30px;">
+	         	<div class="hbox text-center b-t b-light">          
+	              <a href="" class="col padder-v text-muted b-r b-light">
+	                <div class="h3"  style="color:#000">{{vm.product.time}}分钟</div>
+	                <span>服务时间</span>
+	              </a>
+	              <a href="" class="col padder-v  b-r text-muted">
+	                <div class="h3" style="color:#000"> {{vm.product.virtual_available}}件</div>
+	                <span>库存</span>
+	              </a>
+	              <a href="" class="col padder-v text-muted">
+	                <div class="h3" style="color:#000">{{vm.product.sales_count}}件</div>
+	                <span>已售出</span>
+	              </a>
+	            </div>
+            </div>
+            <div style="background-color:#ff5252;color:#Ffffff;min-height:50px;padding:25px;">
+            <article class="media" >
+	            <span class="pull-left thumb-sm"><i class="fa icon-info fa-2x"></i></span>                
+	            <div class="media-body">
+	              	<div class="h3 pull-left">重要提示</div>
+	              	<div style="text-align:left;clear:both;">
+	              		<small class="block m-t-sm" data-ng-bind-html="vm.product.description_notice" style="color:#ffffff;"></small>
+	              	</div>
+	            </div>
+            </article>
+            </div>
+            <div style="background-color:#ffffff;color:#000000;min-height:50px;padding:25px;margin-bottom:90px;">
+	            <article class="media" >
+                    <span class="pull-left thumb-sm"><i class="fa icon-book-open fa-2x"></i></span>
+                    <div class="media-body">
+                        <div class="h3 pull-left">商品详情</div>
+                        <div style="text-align:left;clear:both;">
+                            <small class="block m-t-sm" data-ng-bind-html="vm.product.description_shop" style="color:#000000;"></small>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+	</div>
+	<div  class="settings panel panel-default ng-scope active text-center" style="width:100%;padding:20px 0px;background-color:#f0f3f4;">
+  		<div class="btn-group btn-group-justified ng-scope text-center" >
+			<a data-ng-click="vm.addFollow()" class="btn btn-lg col padder-v text-muted b-r b-light" style="background-color:#ffffff;border:solid 1px #ff5252;color:#ff5252;width:50%;"><i class="fa fa-heart-o" style="color:#ff5252;"></i>添加关注</a>
+			<a data-ng-click="vm.addCart()"   class="btn btn-lg col padder-v text-muted b-r b-light" style="background-color:#ff5252;border:solid 1px #ff5252;color:#ffffff;width:50%;"><i class="fa  fa-shopping-cart" ></i>加入购物车</a>
+		</div>
+  	</div>  
+</div>
+  
+ 

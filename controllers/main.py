@@ -45,7 +45,6 @@ class WeixinShop(http.Controller):
         template = lookup.get_template('index.html')
         return template.render()
 
-
     #获取头部展示图片
     @http.route('/wxshop/carousel',type='http', auth="none", csrf=False)
     def getCarousel(self, **post):
@@ -71,12 +70,6 @@ class WeixinShop(http.Controller):
                 'items':items,
             }
         return json.dumps(result)
-
-
-
-
-
-
 
     #获取产品信息
     @http.route('/wxshop/products',  type='http', auth="none", csrf=False)

@@ -128,3 +128,58 @@ class born_lottery_result(osv.osv):
     product_id = fields.Many2one('product.product', u'奖品',)
     description = fields.Char(u'说明',size=255,help=u"说明")
 
+
+#标志分类
+class born_shop_category(models.Model):
+    _name = 'born.shop.category'
+
+    name = fields.Char(u'名称')
+    image = fields.Binary(u'标志图片', attachment=True)
+    image_url = fields.Char(u'图片url')
+    type = fields.Selection([('url', u'链接'),('product_ids',u'商品'),('category_ids',u'分类'),('content_ids',u'文章'),('function_ids',u'功能')], default='url',string=u'类型',help=u'类型')
+    sequence = fields.Integer(u'排序')
+    description = fields.Text(u'说明')
+
+
+
+class born_shop_position(models.Model):
+    _name = 'born.shop.position'
+
+    name = fields.Char(u'名称')
+
+
+class born_shop_template(models.Model):
+    _name = 'born.shop.template'
+
+    name = fields.Char(u'模版名')
+    poistion_ids = fields.Many2one('born.shop.position',u'位置')
+    color = fields.Selection([('blue', u'蓝色'),('red',u'红色'),('black',u'黑色'),('green',u'绿色')], default='blue',string=u'颜色主题',help=u'颜色主题')
+
+
+class born_shop_model(models.Model):
+    _name = 'born.shop.model'
+
+    name = fields.Char(u'模块名')
+    type = fields.Selection([('url', u'幻灯片'),('product_ids',u'文章'),('category_ids',u'产品'),('content_ids',u'分类'),('function_ids',u'功能')], default='url',string=u'类型',help=u'类型')
+
+class born_shop_config(models.Model):
+    _name = 'born.shop.config'
+
+    name = fields.Char(u'名称')
+    template_id = fields.Many2one('born.shop.template',u'模版')
+    position_model = fields.Many2one('position.model',u'模块位置')
+
+
+class position_model(models.Model):
+    _name = 'position.model'
+
+    config_id = fields.Many2one('born.shop.config',u'配置')
+    template_id = fields.Many2one('born.shop.template',u'模板')
+    model_id = fields.Many2one('born.shop.model',u'模块')
+    position_id = fields.Many2one('born.shop.position',u'位置')
+
+class born_shop_nav(models.Model):
+    _name = 'born.shop.nav'
+
+    name = fields.Char(u'名称')
+    sequence = fields.Integer(u'排序')

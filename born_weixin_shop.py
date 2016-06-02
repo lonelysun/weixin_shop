@@ -8,6 +8,7 @@
 #  Copyright (C) 2011-2014 www.wevip.com All Rights Reserved
 ##############################################################################
 
+import openerp
 from openerp.osv import fields, osv
 from openerp import models,fields,api
 from openerp import _
@@ -133,12 +134,36 @@ class born_lottery_result(osv.osv):
 class born_shop_category(models.Model):
     _name = 'born.shop.category'
 
+    @api.one
+    @api.depends('image')
+    def _make_local_url(self):
+        for line in self:
+            if self.image:
+                domain=[('type','=','binary'),('res_field','=','image'),('res_model','=','born.shop.category'),('res_id','=',self.id)]
+                attachment=self.env['ir.attachment'].search(domain,limit=1)
+                if attachment:
+                    server_url=openerp.tools.config['localhost_server_url']
+                    image_url='%s%s' % (server_url,attachment.local_url)
+                    line.image_url = image_url
+
+
     name = fields.Char(u'名称')
     image = fields.Binary(u'标志图片', attachment=True)
-    image_url = fields.Char(u'图片url')
+    image_url =  fields.Char(string=u'图片地址', compute='_make_local_url',multi='_make_local_url', help=u"图片地址")
     type = fields.Selection([('url', u'链接'),('product_ids',u'商品'),('category_ids',u'分类'),('content_ids',u'文章'),('function_ids',u'功能')], default='url',string=u'类型',help=u'类型')
     sequence = fields.Integer(u'排序')
     description = fields.Text(u'说明')
+
+class born_ir_attachment(models.Model):
+    _inherit = "ir.attachment"
+
+    # 创建
+    @api.model
+    def create(self, vals):
+        if vals.get('res_model') == 'born.shop.category':
+            vals['public'] = True
+        return super(born_ir_attachment, self).create(vals)
+
 
 
 
@@ -152,7 +177,7 @@ class born_shop_template(models.Model):
     _name = 'born.shop.template'
 
     name = fields.Char(u'模版名')
-    poistion_ids = fields.Many2one('born.shop.position',u'位置')
+    poistion_ids = fields.Many2many('born.shop.position',string=u'位置')
     color = fields.Selection([('blue', u'蓝色'),('red',u'红色'),('black',u'黑色'),('green',u'绿色')], default='blue',string=u'颜色主题',help=u'颜色主题')
 
 
@@ -161,22 +186,23 @@ class born_shop_model(models.Model):
 
     name = fields.Char(u'模块名')
     type = fields.Selection([('url', u'幻灯片'),('product_ids',u'文章'),('category_ids',u'产品'),('content_ids',u'分类'),('function_ids',u'功能')], default='url',string=u'类型',help=u'类型')
+    category_ids = fields.Many2many('born.shop.category',string=u'内容')
+
+
 
 class born_shop_config(models.Model):
     _name = 'born.shop.config'
 
     name = fields.Char(u'名称')
     template_id = fields.Many2one('born.shop.template',u'模版')
-    position_model = fields.Many2one('position.model',u'模块位置')
+    position_model = fields.Many2many('position.model',string=u'模块位置')
 
 
 class position_model(models.Model):
     _name = 'position.model'
 
-    config_id = fields.Many2one('born.shop.config',u'配置')
-    template_id = fields.Many2one('born.shop.template',u'模板')
-    model_id = fields.Many2one('born.shop.model',u'模块')
     position_id = fields.Many2one('born.shop.position',u'位置')
+    model_id = fields.Many2one('born.shop.model',u'模块')
 
 class born_shop_nav(models.Model):
     _name = 'born.shop.nav'

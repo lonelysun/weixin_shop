@@ -746,8 +746,8 @@ body {
 
 .app-content-full {
   position: absolute;
-  top: 50px;
-  bottom: 50px;
+  top: 0px;
+  bottom: 0px;
   width: auto !important;
   height: auto;
   padding: 0 !important;
@@ -763,7 +763,7 @@ body {
 .app-content-body {
   float: left;
   width: 100%;
-  padding-bottom: 50px;
+  /**padding-bottom: 50px;*/
 }
 
 .app-footer {
@@ -910,7 +910,6 @@ body {
   .navbar-collapse,
   .app-content,
   .app-footer {
-    margin-left: 200px;
   }
   .app-aside-right {
     position: absolute;
@@ -4224,23 +4223,23 @@ a.text-#000000:hover {
 }
 
 .b-a {
-  border: 1px solid #dee5e7;
+  border: 1px solid #F7F7F7;
 }
 
 .b-t {
-  border-top: 1px solid #dee5e7;
+  border-top: 1px solid #F7F7F7;
 }
 
 .b-r {
-  border-right: 1px solid #dee5e7;
+  border-right: 1px solid #F7F7F7;
 }
 
 .b-b {
-  border-bottom: 1px solid #dee5e7;
+  border-bottom: 1px solid #F7F7F7;
 }
 
 .b-l {
-  border-left: 1px solid #dee5e7;
+  border-left: 1px solid #F7F7F7;
 }
 
 .b-light {
@@ -5178,3 +5177,82 @@ a.text-#000000:hover {
     background-color: #7266ba;
   }
 }
+
+
+
+.footermenu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+}
+
+.footermenu ul {
+    border-top: 1px solid #333333;
+    position: fixed;
+    z-index: 900;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    width: 100%;
+    background: #333333;
+    height: 48px;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: horizontal;
+    box-shadow: 0 1px 0 #333333 inset;
+}
+
+.footermenu ul li a img {
+    width: 24px;
+    height: 24px;
+}
+
+.footermenu ul li {
+    float: left;
+    width: 25%;
+    height: 100%;
+    position: static !important;
+    margin: 0;
+    border-radius: 0 !important;
+    box-sizing: border-box;
+    box-shadow: none !important;
+    background: none;
+    list-style: none;
+}
+
+.footermenu ul li a {
+    position: relative;
+    height: 48px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    padding-top: 2px;
+    position: relative;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+
+}
+
+.footermenu ul li.active a {
+    background: #333333;
+    border-bottom: 0;
+    color: #ff5252;
+}
+
+.footermenu ul li a p {
+    position: absolute;
+    width: 100%;
+    bottom: 4px;
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    display: block !important;
+    line-height: 18px;
+    text-align: center;
+}
+

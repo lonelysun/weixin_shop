@@ -38,38 +38,13 @@ _logger = logging.getLogger(__name__)
 
 class WeixinShop(http.Controller):
 
-    @http.route(['/wxshop',
-                  '/wxshop/<string:db>/<string:app_id>'],  type='http', auth="none", csrf=False)
-    def wxshop(self,db=None, app_id=None,**post):
-        request.session.db = 'big_white9.0-0.1'
+    @http.route(['/<string:db>/<string:cid>/wxshop'],  type='http', auth="none", csrf=False)
+    def wxshop(self,db=None, cid=None,**post):
+        request.session.db = db
         template = lookup.get_template('index.html')
         return template.render()
 
-    #获取头部展示图片
-    @http.route('/wxshop/carousel',type='http', auth="none", csrf=False)
-    def getCarousel(self, **post):
 
-        position=post.get('position','mobile_top')
-        domain=[('type','=','carousel')]
-        domain += [('position', '=',position)]
-
-        carousel_obj = request.env['born.carousel']
-        carousels = carousel_obj.sudo().search(domain, limit=1)
-        items=[]
-        result={}
-        for carousel in carousels:
-            for item in carousel.item_ids:
-                val={
-                     'image_url':item.image_url,
-                     'title':item.title,
-                     'link_url':item.link_url,
-                }
-                items.append(val)
-            result={
-                'interval':carousel.interval,
-                'items':items,
-            }
-        return json.dumps(result)
 
     #获取产品信息
     @http.route('/wxshop/products',  type='http', auth="none", csrf=False)

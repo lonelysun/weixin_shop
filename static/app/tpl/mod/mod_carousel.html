@@ -1,0 +1,13 @@
+<div ng-controller="ModCarousel" ng-init="init()">
+    <carousel interval="interval">
+        <slide ng-repeat="slide in slides" >
+            <a data-ng-if="slide.link_url!=false"  href="{{slide.link_url}}">
+                <img ng-src="{{slide.image_url}} " style="margin:auto;">
+            </a>
+            <img data-ng-if="slide.link_url==false" ng-src="{{slide.image_url}} " style="margin:auto;">
+            <div class="carousel-caption">
+              <p>{{slide.title}}</p>
+            </div>
+        </slide>
+    </carousel>
+</div>

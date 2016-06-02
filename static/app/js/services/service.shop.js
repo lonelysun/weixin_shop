@@ -2,26 +2,47 @@
 
     var injectParams = ['$http', '$q'];
 
-    var productsFactory = function ($http, $q) {
-        var serviceBase = '/wxshop/', factory = {};
-        
-        factory.getProducts = function (category_id) {
+    var shopFactory = function ($http, $q) {
+        var serviceBase = window.document.location.pathname;
+        var factory = {};
 
-            
-            return "{'data':'1'}";
+        /** mod carousel **/
+        factory.getCarousel = function (position) {
+            return $http.get(serviceBase + '_get_carousel', {
+                params : {
+                    position:position
+     			}
+            }).then(function(results) {
+                return results.data;
+            });
         };
-        
-        factory.getMods = function (category_id) {
+        /** mod carousel **/
+        factory.getNav = function (position) {
+            return $http.get(serviceBase + '_get_nav', {
+                params : {
+                    position:position
+     			}
+            }).then(function(results) {
+                return results.data;
+            });
+        };
 
-            
-            return category_id;
+        /** mod contact us **/
+        factory.getContact = function (position) {
+            return $http.get(serviceBase + '_get_contact', {
+                params : {
+     			}
+            }).then(function(results) {
+                return results.data;
+            });
         };
+
+
 
         return factory;
     };
 
-    productsFactory.$inject = injectParams;
-
-    angular.module('app').factory('shopService', productsFactory);
+    shopFactory.$inject = injectParams;
+    angular.module('app').factory('shopService', shopFactory);
 
 }());

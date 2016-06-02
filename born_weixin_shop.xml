@@ -1,1 +1,367 @@
-<?xml version="1.0" encoding="utf-8"?><openerp>	<data>						<menuitem name="商城" id="menu_born_root_shop" parent="base.menu_administration" sequence="2" />                <record model="ir.ui.view" id="born_born_lottery_tree">            <field name="name">born.lottery.tree</field>            <field name="model">born.lottery</field>            <field name="arch" type="xml">                <tree>                    <field name="name" />                    <field name="path"/>                    <field name="level"/>                </tree>            </field>        </record>        <record model="ir.ui.view" id="born_born_lottery_form">            <field name="name">born.lottery.form</field>            <field name="model">born.lottery</field>            <field name="arch" type="xml">                <form>                   <sheet>						<label for="name" class="oe_edit_only"/>                        <h1>                            <field name="name" style="width:40%%"/>                        </h1>                       <group>                       		<group>                       		 	<field name="path" />                       		 	<field name="level" />                       		</group>                       </group>                       <group>                       		<field name="image" widget='image'  />            				<field name="description" />						</group>					</sheet>                </form>            </field>        </record>                <record model="ir.actions.act_window" id="born_born_lottery_action">            <field name="name">抽奖</field>            <field name="res_model">born.lottery</field>            <field name="view_type">form</field>            <field name="view_mode">tree,form</field>        </record>                         <record model="ir.ui.view" id="born_born_spread_tree">            <field name="name">born.spread.tree</field>            <field name="model">born.spread</field>            <field name="arch" type="xml">                <tree>                    <field name="name" />                    <field name="lottery_id"/>                    <field name="start_date"/>                    <field name="end_date"/>                </tree>            </field>        </record>        <record model="ir.ui.view" id="born_born_spread_form">            <field name="name">born.spread.form</field>            <field name="model">born.spread</field>            <field name="arch" type="xml">                <form>                   <sheet>						<label for="name" class="oe_edit_only"/>                        <h1>                            <field name="name" style="width:40%%"/>                        </h1>                       <group>                       		<group>                       		 	<field name="lottery_id" />                       		 	<field name="start_date" />                       		 	<field name="end_date" />                       		</group>                       </group>                       <group>                       		<field name="start_order_amount"  />            				<field name="description" />            				<field name="image" widget='image'  />						</group>												<notebook>                        	<page string="奖品列表" >		                        <field name="product_ids" >		                             <tree string="Order lines" editable="bottom" >		                             	 <field name="name"/>			                             <field name="product_id"/>			                             <field name="level" />			                             <field name="invalid_date" />			                         </tree>		                        </field>	                        </page>	                        <page string="抽奖条件（需购买以下产品）" >		                        <field name="product_limit_ids"  >		                             <tree string="Order lines" editable="bottom" >			                             <field name="product_id"/>			                         </tree>		                        </field>	                        </page>                       </notebook>					</sheet>                </form>            </field>        </record>                <record model="ir.actions.act_window" id="born_born_spread_action">            <field name="name">活动</field>            <field name="res_model">born.spread</field>            <field name="view_type">form</field>            <field name="view_mode">tree,form</field>        </record>                <record model="ir.ui.view" id="born_born_lottery_result_tree">            <field name="name">born.spread.tree</field>            <field name="model">born.lottery.result</field>            <field name="arch" type="xml">                <tree>                	<field name="weixin_user_id" />                    <field name="order_id" />                    <field name="spread_id"/>                    <field name="openid"/>                    <field name="state"/>                    <field name="product_id"/>                    <field name="invalid_date"/>                </tree>            </field>        </record>        <record model="ir.ui.view" id="born_born_lottery_result_form">            <field name="name">born.spread.form</field>            <field name="model">born.lottery.result</field>            <field name="arch" type="xml">                <form>                   <sheet>                       <group>                       		<group>                       		 	<field name="weixin_user_id" />                       		 	<field name="openid" />                       		 	<field name="product_id" />                       		 	<field name="invalid_date" />                       		</group>                       		<group>                       		 	<field name="order_id" />                       		 	<field name="spread_id" />                       		 	<field name="state" />                       		 	<field name="description" />                       		</group>                       </group>					</sheet>                </form>            </field>        </record>                <record model="ir.actions.act_window" id="born_born_lottery_result_action">            <field name="name">抽奖结果</field>            <field name="res_model">born.lottery.result</field>            <field name="view_type">form</field>            <field name="view_mode">tree,form</field>        </record>        <record model="ir.ui.view" id="born_shop_category_tree">            <field name="name">born.shop.category.tree</field>            <field name="model">born.shop.category</field>            <field name="arch" type="xml">                <tree>                    <field name="name" />                    <field name="type"/>                    <field name="sequence"/>                </tree>            </field>        </record>        <record model="ir.ui.view" id="born_shop_category_form">            <field name="name">born.shop.category.form</field>            <field name="model">born.shop.category</field>            <field name="arch" type="xml">                <form>                   <sheet>						<label for="name" class="oe_edit_only"/>                        <h1>                            <field name="name" style="width:40%%"/>                        </h1>                       <group>                       		<group>                       		 	<field name="type" />                       		 	<field name="sequence" />                       		</group>                       </group>                       <group>                       		<field name="image" widget='image'  />            				<field name="description" />						</group>					</sheet>                </form>            </field>        </record>        <record model="ir.actions.act_window" id="born_shop_category_action">            <field name="name">商城分类配置</field>            <field name="res_model">born.shop.category</field>            <field name="view_type">form</field>            <field name="view_mode">tree,form</field>        </record>                        <menuitem id="born_menu_born_lottery" name="抽奖配置"  sequence="90" parent="menu_born_root_shop" action="born_born_lottery_action" />        <menuitem id="born_menu_born_spread" name="活动"  sequence="90" parent="menu_born_root_shop" action="born_born_spread_action" />        <menuitem id="born_menu_born_lottery_result" name="抽奖结果"  sequence="90" parent="menu_born_root_shop" action="born_born_lottery_result_action" />		<menuitem name="商城分类配置" id="menu_born_shop_category" parent="menu_born_root_shop" sequence="90"  action="born_shop_category_action" />	</data></openerp>
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		
+		<menuitem name="商城" id="menu_born_root_shop" sequence="2" />
+
+        
+        <record model="ir.ui.view" id="born_born_lottery_tree">
+            <field name="name">born.lottery.tree</field>
+            <field name="model">born.lottery</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="path"/>
+                    <field name="level"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_born_lottery_form">
+            <field name="name">born.lottery.form</field>
+            <field name="model">born.lottery</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+						<label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" style="width:40%%"/>
+                        </h1>
+                       <group>
+                       		<group>
+                       		 	<field name="path" />
+                       		 	<field name="level" />
+                       		</group>
+                       </group>
+                       <group>
+                       		<field name="image" widget='image'  />
+            				<field name="description" />
+						</group>
+					</sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="born_born_lottery_action">
+            <field name="name">抽奖</field>
+            <field name="res_model">born.lottery</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+         <record model="ir.ui.view" id="born_born_spread_tree">
+            <field name="name">born.spread.tree</field>
+            <field name="model">born.spread</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="lottery_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_born_spread_form">
+            <field name="name">born.spread.form</field>
+            <field name="model">born.spread</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+						<label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" style="width:40%%"/>
+                        </h1>
+                       <group>
+                       		<group>
+                       		 	<field name="lottery_id" />
+                       		 	<field name="start_date" />
+                       		 	<field name="end_date" />
+                       		</group>
+                       </group>
+                       <group>
+                       		<field name="start_order_amount"  />
+            				<field name="description" />
+            				<field name="image" widget='image'  />
+						</group>
+						
+						<notebook>
+                        	<page string="奖品列表" >
+		                        <field name="product_ids" >
+		                             <tree string="Order lines" editable="bottom" >
+		                             	 <field name="name"/>
+			                             <field name="product_id"/>
+			                             <field name="level" />
+			                             <field name="invalid_date" />
+			                         </tree>
+		                        </field>
+	                        </page>
+	                        <page string="抽奖条件（需购买以下产品）" >
+		                        <field name="product_limit_ids"  >
+		                             <tree string="Order lines" editable="bottom" >
+			                             <field name="product_id"/>
+			                         </tree>
+		                        </field>
+	                        </page>
+                       </notebook>
+					</sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="born_born_spread_action">
+            <field name="name">活动</field>
+            <field name="res_model">born.spread</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <record model="ir.ui.view" id="born_born_lottery_result_tree">
+            <field name="name">born.spread.tree</field>
+            <field name="model">born.lottery.result</field>
+            <field name="arch" type="xml">
+                <tree>
+                	<field name="weixin_user_id" />
+                    <field name="order_id" />
+                    <field name="spread_id"/>
+                    <field name="openid"/>
+                    <field name="state"/>
+                    <field name="product_id"/>
+                    <field name="invalid_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_born_lottery_result_form">
+            <field name="name">born.spread.form</field>
+            <field name="model">born.lottery.result</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+                       <group>
+                       		<group>
+                       		 	<field name="weixin_user_id" />
+                       		 	<field name="openid" />
+                       		 	<field name="product_id" />
+                       		 	<field name="invalid_date" />
+                       		</group>
+                       		<group>
+                       		 	<field name="order_id" />
+                       		 	<field name="spread_id" />
+                       		 	<field name="state" />
+                       		 	<field name="description" />
+                       		</group>
+                       </group>
+					</sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="born_born_lottery_result_action">
+            <field name="name">抽奖结果</field>
+            <field name="res_model">born.lottery.result</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_category_tree">
+            <field name="name">born.shop.category.tree</field>
+            <field name="model">born.shop.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="type"/>
+                    <field name="sequence"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_category_form">
+            <field name="name">born.shop.category.form</field>
+            <field name="model">born.shop.category</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+						<label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" style="width:40%%"/>
+                        </h1>
+                       <group>
+                       		<group>
+                       		 	<field name="type" />
+                       		 	<field name="sequence" />
+                       		</group>
+                       </group>
+                       <group>
+                       		<field name="image" widget='image'  />
+            				<field name="description" />
+						</group>
+					</sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="born_shop_category_action">
+            <field name="name">商城分类配置</field>
+            <field name="res_model">born.shop.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="born_shop_model_tree">
+            <field name="name">born.shop.model.tree</field>
+            <field name="model">born.shop.model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_model_form">
+            <field name="name">born.shop.model.form</field>
+            <field name="model">born.shop.model</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+						<label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" style="width:40%%"/>
+                        </h1>
+                       <group>
+                       		<group>
+                       		 	<field name="type" />
+                       		</group>
+                           <group>
+                           </group>
+                       </group>
+                     <notebook>
+                        <page string="内容">
+                            <field name="category_ids" >
+                                <tree>
+                                    <field name="name"></field>
+                                    <field name="type"></field>
+                                    <field name="sequence"></field>
+                                    <field name="description"></field>
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+					</sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="born_shop_model_action">
+            <field name="name">商城模块</field>
+            <field name="res_model">born.shop.model</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_template_tree">
+            <field name="name">born.shop.template.tree</field>
+            <field name="model">born.shop.template</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="color"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_template_form">
+            <field name="name">born.shop.template.form</field>
+            <field name="model">born.shop.template</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+						<label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" style="width:40%%"/>
+                        </h1>
+                       <group>
+                       		<group>
+                       		 	<field name="color"/>
+                                 <field name="poistion_ids"  widget="many2many_tags"/>
+                       		</group>
+                           <group>
+                           </group>
+                       </group>
+					</sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="born_shop_template_action">
+            <field name="name">商城模版</field>
+            <field name="res_model">born.shop.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_config_tree">
+            <field name="name">born.shop.config.tree</field>
+            <field name="model">born.shop.config</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="template_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="born_shop_config_form">
+            <field name="name">born.shop.config.form</field>
+            <field name="model">born.shop.config</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+						<label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" style="width:40%%"/>
+                        </h1>
+                       <group>
+                       		<group>
+                       		 	<field name="template_id"/>
+                       		</group>
+                           <group>
+                           </group>
+                       </group>
+                       <notebook>
+                        <page string="模块位置">
+                            <field name="position_model" >
+                                <tree>
+                                    <field name="position_id"></field>
+                                    <field name="model_id"></field>
+                                </tree>
+                            </field>
+                        </page>
+                       </notebook>
+					</sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="born_shop_config_action">
+            <field name="name">商城配置</field>
+            <field name="res_model">born.shop.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        
+        <menuitem id="born_menu_born_lottery" name="抽奖配置"  sequence="90" parent="menu_born_root_shop" action="born_born_lottery_action" />
+        <menuitem id="born_menu_born_spread" name="活动"  sequence="90" parent="menu_born_root_shop" action="born_born_spread_action" />
+        <menuitem id="born_menu_born_lottery_result" name="抽奖结果"  sequence="90" parent="menu_born_root_shop" action="born_born_lottery_result_action" />
+		<menuitem name="商城分类配置" id="menu_born_shop_category" parent="menu_born_root_shop" sequence="90"  action="born_shop_category_action" />
+		<menuitem name="商城模块配置" id="menu_born_shop_model" parent="menu_born_root_shop" sequence="90"  action="born_shop_model_action" />
+		<menuitem name="商城模版配置" id="menu_born_shop_template" parent="menu_born_root_shop" sequence="91"  action="born_shop_template_action" />
+		<menuitem name="商城总配置" id="menu_born_shop_config" parent="menu_born_root_shop" sequence="91"  action="born_shop_config_action" />
+
+	</data>
+</openerp>

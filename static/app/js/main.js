@@ -3,16 +3,16 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope',   '$localStorage', '$window',
-    function(              $scope,     $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope','$localStorage','$window',
+    function($scope,$localStorage,$window ) {
 
       // config
       $scope.app = {
-        name: 'Ds',
-        path:'/born_weixin_shop/static/app/tpl/mod/mod_contact.html',
-
+        name: '店尚服务平台',
+        path:'/born_weixin_shop/static',
+        title:'店尚商城',
         version: '1.0.0',
-        // for chart colors
+        
         color: {
           primary: '#7266ba',
           info:    '#23b7e5',
@@ -35,5 +35,4 @@ angular.module('app')
           container: false
         }
       }
-
   }]);

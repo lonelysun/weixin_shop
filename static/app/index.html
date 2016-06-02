@@ -1,40 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="app">
+<html lang="en" data-ng-app="app" ng-controller="AppCtrl">
 <head>
   <meta charset="utf-8" />
-  <title>DS</title>
+  <title>{{app.title}}</title>
   <meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package" />
   <meta name="keywords" content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="/born_weixin_shop/static/libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="/born_weixin_shop/static/app/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="/born_weixin_shop/static/libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+      <link rel="stylesheet" href="/born_weixin_shop/static/libs/weixin/weui.css" type="text/css" />
+
+    <link rel="stylesheet" href="/born_weixin_shop/static/app/css/app.css" type="text/css" />
 </head>
-<body ng-controller="AppCtrl">
+<body >
 
-  <div  id="app" class="app app-header-fixed app-aside-folded app-aside-dock"  ui-view></div>
+  <div  id="app" class="app app-header-fixed  "  ui-view></div>
 
-  <!--<script src="/born_weixin_shop/static/libs/jquery/jquery/dist/jquery.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular/angular.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-animate/angular-animate.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-cookies/angular-cookies.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-messages/angular-messages.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-resource/angular-resource.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-sanitize/angular-sanitize.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-touch/angular-touch.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-ui-router/release/angular-ui-router.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/ngstorage/ngStorage.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/libs/angular/oclazyload/dist/ocLazyLoad.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/app.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/config.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/config.lazyload.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/config.router.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/main.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/services/service.shop.js"></script>-->
-  <!--<script src="/born_weixin_shop/static/app/js/services/ui-load.js"></script>-->
+  <script src="/born_weixin_shop/static/libs/jquery/jquery/dist/jquery.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular/angular.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-animate/angular-animate.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-cookies/angular-cookies.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-messages/angular-messages.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-resource/angular-resource.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-touch/angular-touch.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/ngstorage/ngStorage.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/born_weixin_shop/static/libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
+  <script src="/born_weixin_shop/static/app/js/app.js"></script>
+  <script src="/born_weixin_shop/static/app/js/config.js"></script>
+  <script src="/born_weixin_shop/static/app/js/config.lazyload.js"></script>
+  <script src="/born_weixin_shop/static/app/js/config.router.js"></script>
+  <script src="/born_weixin_shop/static/app/js/services/service.shop.js"></script>
+  <script src="/born_weixin_shop/static/app/js/services/ui-load.js"></script>
+  <script src="/born_weixin_shop/static/app/js/main.js"></script>
+  <!--
   <script src="/born_weixin_shop/static/app/js/app.min.js"></script>
+    -->
 
-    <script src="/born_weixin_shop/static/app/js/directives/directives_demo.js"></script>
+
+  <script src="/born_weixin_shop/static/app/js/directives/mod.directive.js"></script>
 
 </body>
 </html>

@@ -16,17 +16,21 @@ angular.module('app')
 
           var base_dic="/born_weixin_shop/static/app";
           var layout = base_dic+"/tpl/app.html";
-          $urlRouterProvider.otherwise('/app/dashboard');
+          $urlRouterProvider.otherwise('/app/index');
           $stateProvider
               .state('app', {
                   abstract: true,
                   url: '/app',
                   templateUrl: layout
               })
-              .state('app.dashboard', {
-                  url: '/dashboard',
-                  templateUrl: base_dic+'/tpl/app_dashboard.html',
-                  resolve: load([base_dic+'/js/controllers/signin.js'])
+              .state('app.index', {
+                  url: '/index',
+                  templateUrl: base_dic+'/tpl/app_index.html',
+                  resolve: load([base_dic+'/js/controllers/mod.all.js',base_dic+'/js/controllers/app.index.js'])
+              }).state('app.category', {
+                  url: '/index',
+                  templateUrl: base_dic+'/tpl/app_index.html',
+                  resolve: load([base_dic+'/js/controllers/mod.all.js',base_dic+'/js/controllers/app.index.js'])
               });
 
           function load(srcs, callback) {
@@ -40,8 +44,6 @@ angular.module('app')
                       promise = deferred.promise;
                     }
                     angular.forEach(srcs, function(src) {
-
-                      name = src;
                       promise = promise.then( function(){
                         if(JQ_CONFIG[src]){
                           return $ocLazyLoad.load(JQ_CONFIG[src]);

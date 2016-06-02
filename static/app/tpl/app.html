@@ -1,3 +1,4 @@
+
   <!-- navbar -->
 
   <!-- / navbar -->
@@ -9,20 +10,40 @@
   <!-- content -->
   <div class="app-content-full">
     <div class="app-content-body fade-in-up" ui-view></div>
+
   </div>
   <!-- /content -->
 
   <!-- footer -->
-  <div class="app-footer wrapper b-t bg-dark ng-scope">
-    <span class="pull-right">
-        <a href ui-scroll-to="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a>
-    </span>
-    <div class=" text-center">
-      <div class="text-center h4 m-t m-b-xs">店尚服务平台</div>
-      <small class="text-center text-muted m-b">
-          <a href="http://www.we-erp.com">&copy; 2016 上海波恩网络科技服务有限公司</a></small>
-    </div>
+  <div class="app-footer bg-dark ng-scope" style="background-color:#333;">
+    <div class="weui_tabbar">
+        <a ui-sref="app.index" class="weui_tabbar_item weui_bar_item_on">
+          <div class="weui_tabbar_icon">
+            <i class="fa fa-home"></i>
+          </div>
+          <p class="weui_tabbar_label">首页</p>
+        </a>
+        <a ui-sref="app.category" class="weui_tabbar_item">
+          <div class="weui_tabbar_icon">
+            <i class="fa fa-th-large"></i>
+          </div>
+          <p class="weui_tabbar_label">分类</p>
+        </a>
+        <a href="#/app.index" class="weui_tabbar_item">
+          <div class="weui_tabbar_icon">
+            <i class="fa fa-shopping-cart"></i>
+          </div>
+          <p class="weui_tabbar_label">购物车</p>
+        </a>
+        <a href="#/app.index" class="weui_tabbar_item">
+          <div class="weui_tabbar_icon">
+            <i class="fa fa-user"></i>
+          </div>
+          <p class="weui_tabbar_label">我的</p>
+        </a>
+      </div>
   </div>
+
   <!-- / footer -->
 
 

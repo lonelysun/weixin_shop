@@ -1,5 +1,15 @@
-
-  <div ng-controller="SigninFormController">
-    <h1>contact us  {{ hello }}</h1>
-  </div>
-
+<div ng-controller="ModContact" ng-init="init()">
+    <div class="no-border" style="background-color: #333;"   >
+        <div class="wrapper" style="color:#ffffff;" >
+            <h5 class="text-center" style="margin: 20px 0px 10px 0px;font-size:28px;">
+                <a href="">联系我们</a>
+            </h5>
+           <div class=" text-center p-l p-r">
+                <small>{{ company.note }}</small>
+            </div>
+            <h2 class="text-center" style="margin: 40px 0px 50px 0px;font-size:18px;">
+                <a style="border: solid 1px #ffffff;padding:8px 32px;;" >{{ company.company_phone}}</a>
+            </h2>
+        </div>
+    </div>
+</div>
